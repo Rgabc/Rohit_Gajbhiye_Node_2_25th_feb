@@ -65,3 +65,46 @@ catch(err){
 
 
  }
+
+
+ exports.getUsers=async(req,res)=>{
+    try{
+        const usersData= await userModel.find();
+        res.json(usersData);
+    }
+    catch(err){
+        res,json(err);
+    }
+}
+
+exports.getByIdUsers=async(req,res)=>{
+    try{
+        const usersData= await userModel.find({_id:req.params.userId});
+        res.json(usersData);
+    }
+    catch(err){
+        res,json(err);
+    }
+}
+exports.editData=(req,res)=>{
+    
+ userModel.findByIdAndUpdate({_id:req.params.userId},req.body,{new:true},(err,data)=>{
+    if(err){
+        res.json(err);
+    }
+    else{
+        res.json(data);}
+ })
+    
+}
+exports.Delete=(req,res)=>{
+    
+    userModel.findByIdAndDelete({_id:req.params.userId},(err,data)=>{
+       if(err){
+           res.json(err);
+       }
+       else{
+           res.json(data);}
+    })
+       
+   }

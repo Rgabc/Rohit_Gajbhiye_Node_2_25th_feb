@@ -6,11 +6,11 @@ const userSchema=new mongoose.Schema(
         email:String,
         password:String,
         blogPost:{
-            title:String,
-            content:String}
+            post:String,
+            comment:String}
     
     }
 )
 // db me folder create  
 // we need collection file name to save data in thta db folder 
-module.exports=mongoose.model("login",userSchema)// mongoose.model(helps to create collection name as well as data structure get store in collection)
+module.exports=mongoose.model("post",userSchema)// mongoose.model(helps to create collection name as well as data structure get store in collection)
